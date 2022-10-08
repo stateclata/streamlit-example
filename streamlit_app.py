@@ -6,13 +6,7 @@ import mysql.connector
 
 
 @st.experimental_singleton
-def init_connection():
-    conn = mysql.connector.connect(host="192.168.12.150", database="cubedb", user="arduino", password="1234")
-    cursor = conn.cursor()
 
-    conn = init_connection()
-    query = "SELECT * FROM rooms"
-    cursor.execute(query)
 
 def main():
     st.title("Cube Rooms")
@@ -27,9 +21,15 @@ def main():
         #Table
     #Results Layouts
     with col2:
-        if submit_code:
+        def init_connection():
+    conn = mysql.connector.connect(host="192.168.12.150", database="cubedb", user="arduino", password="1234")
+    cursor = conn.cursor()
+
+    conn = init_connection()
+    query = "SELECT * FROM rooms"
+    cursor.execute(query)
             st.info("Query Submitted")
-            st.write(raw_code)
+            st.write(row[0])
     
 if __name__ == '__main__':
     main()
