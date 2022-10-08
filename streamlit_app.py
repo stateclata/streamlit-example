@@ -9,6 +9,7 @@ import mysql.connector
 def init_connection():
         conn = mysql.connector.connect(host="192.168.12.150", database="cubedb", user="arduino", password="1234")
         cursor = conn.cursor()
+        for row in cursor: print(row[0])
 
 def main():
     st.title("Cube Rooms")
@@ -22,14 +23,7 @@ def main():
             
         #Table
     #Results Layouts
-    with col2:
-        
-
-        conn = init_connection()
-        query = "SELECT * FROM rooms"
-        cursor.execute(query)
-            st.write(row[0])
-    
+   
 if __name__ == '__main__':
     main()
     
