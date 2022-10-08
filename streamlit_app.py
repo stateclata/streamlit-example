@@ -4,16 +4,15 @@ import streamlit as st
 import pandas as pd
 import mysql.connector
 
-host="192.168.12.150"
-port = 3306
-database="cubedb"
-user="arduino"
-password="1234"
 
 @st.experimental_singleton
 def init_connection():
-    return mysql.connector.connect('postgresql://{}:{}@{}:{}/{}'.format(user,password,host,port,database))
-conn = init_connection()
+    conn = mysql.connector.connect(host=’192.168.12.150’, database=’cubedb’, user=’arduino’, password=’1234’)
+    cursor = conn.cursor()
+
+    conn = init_connection()
+    query = “SELECT * FROM rooms”
+    cursor.execute(query)
 
 def main():
     st.title("Cube Rooms")
