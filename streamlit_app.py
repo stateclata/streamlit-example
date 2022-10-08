@@ -7,6 +7,9 @@ import mysql.connector
 def main():
     st.title("Cube Rooms")
     
+if __name__ == '__main__':
+    main()
+    
 
 # Initialize connection.
 # Uses st.experimental_singleton to only run once.
