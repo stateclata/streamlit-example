@@ -1,52 +1,30 @@
-# streamlit_app.py
-
 import streamlit as st
 import pandas as pd
 import mysql.connector
 
+def app():
+    conn = mysql.connector.connect( host="192.168.12.150",
+                                    port="3306",
+                                    user="root",
+                                    passwd="",
+                                    db="cubedb"
+                                  )
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM rooms LIMIT 1,300")
+    data = cursor.fetchall()
+    df = pd.DataFrame(data, columns=['room_name',
+                                     'room_status']
+                      )
+    df.to_csv("jantungg.csv")
+    df = pd.read_csv('jantungg.csv')
+    df.drop('Unnamed: 0', axis='columns', inplace=True)
+    df['age']= df['age'].astype(int)
 
+    st.subheader("Data diambil dari kaggle :")
+    st.markdown("[DOWNLOAD](https://www.kaggle.com/andrewmvd/heart-failure-clinical-data)")
+    st.dataframe(df)
 
+    shwdata = st.multiselect('Pilih Kolom yang mau ditampilkan:', df.columns, default=[])
+    st.write(df[shwdata])
 
-def main():
-    st.title("Cube Rooms")
-    
-    col1,col2 = st.columns(2)
-    @st.experimental_singleton
-    def init_connection():
-        conn = mysql.connector.connect(host="192.168.12.150", database="cubedb", user="arduino", password="1234")
-        cursor = conn.cursor()
-        for row in cursor: print(row[0])
-    
-         with col1:
-         with st.form(key='query_form'):
-            raw_code = st.text_area(row[0])
-            submit_code = st.form_submit_button("execute")
-            
-        #Table
-    #Results Layouts
-   
-if __name__ == '__main__':
-    main()
-    
-
-# Initialize connection.
-# Uses st.experimental_singleton to only run once.
-#@st.experimental_singleton
-#def init_connection():
- #   return mysql.connector.connect(**st.secrets["mysql"])
-
-#conn = init_connection()
-
-# Perform query.
-# Uses st.experimental_memo to only rerun when the query changes or after 10 min.
-#@st.experimental_memo(ttl=600)
-#def run_query(query):
- #   with conn.cursor() as cur:
-  #      cur.execute(query)
-   #     return cur.fetchall()
-
-#rows = run_query("SELECT * from cubedb.rooms;")
-
-# Print results.
-#for row in rows:
- #   st.write(f"{row[0]} has a :{row[1]}:")
+    st.text('F. Kyriakos)
