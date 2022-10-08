@@ -11,14 +11,14 @@ def main():
     st.title("Cube Rooms")
     
     col1,col2 = st.columns(2)
-@st.experimental_singleton
-def init_connection():
+    @st.experimental_singleton
+    def init_connection():
         conn = mysql.connector.connect(host="192.168.12.150", database="cubedb", user="arduino", password="1234")
         cursor = conn.cursor()
         for row in cursor: print(row[0])
     
-    with col1:
-        with st.form(key='query_form'):
+         with col1:
+         with st.form(key='query_form'):
             raw_code = st.text_area(row[0])
             submit_code = st.form_submit_button("execute")
             
