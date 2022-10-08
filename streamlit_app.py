@@ -22,12 +22,12 @@ def main():
     #Results Layouts
     with col2:
         def init_connection():
-    conn = mysql.connector.connect(host="192.168.12.150", database="cubedb", user="arduino", password="1234")
-    cursor = conn.cursor()
+        conn = mysql.connector.connect(host="192.168.12.150", database="cubedb", user="arduino", password="1234")
+        cursor = conn.cursor()
 
-    conn = init_connection()
-    query = "SELECT * FROM rooms"
-    cursor.execute(query)
+        conn = init_connection()
+        query = "SELECT * FROM rooms"
+        cursor.execute(query)
             st.info("Query Submitted")
             st.write(row[0])
     
