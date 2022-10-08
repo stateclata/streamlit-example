@@ -1,4 +1,4 @@
 streamlit
-mysql-connector-python==8.0.30
+mysql-connector-python==x.x.x
 pandas
 toml
