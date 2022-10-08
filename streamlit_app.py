@@ -3,9 +3,6 @@
 import streamlit as st
 import pandas as pd
 import mysql.connector
-import sqlite3
-conn = sqlite3.connect('data/world.sqlite')
-c = connect.cursor()
 
 host="192.168.12.150"
 port = 3306
