@@ -7,7 +7,7 @@ import mysql.connector
 
 @st.experimental_singleton
 def init_connection():
-    conn = mysql.connector.connect(host=’192.168.12.150’, database=’cubedb’, user=’arduino’, password=’1234’)
+    conn = mysql.connector.connect(host="192.168.12.150", database="cubedb", user="arduino", password="1234")
     cursor = conn.cursor()
 
     conn = init_connection()
