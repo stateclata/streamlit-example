@@ -15,8 +15,6 @@ def app():
     df = pd.DataFrame(data, columns=['room_name',
                                      'room_status']
                       )
-    df.to_csv("jantungg.csv")
-    df = pd.read_csv('jantungg.csv')
     df.drop('Unnamed: 0', axis='columns', inplace=True)
     df['age']= df['age'].astype(int)
 
