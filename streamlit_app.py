@@ -11,7 +11,7 @@ def init_connection():
     cursor = conn.cursor()
 
     conn = init_connection()
-    query = “SELECT * FROM rooms”
+    query = "SELECT * FROM rooms"
     cursor.execute(query)
 
 def main():
