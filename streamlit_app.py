@@ -7,7 +7,7 @@ import mysql.connector
 def main():
     st.title("Cube Rooms")
     
-    col1,col2 = st.beta_columns(2)
+    col1,col2 = st.columns(2)
     
     with col1:
         with st.form(key='query_form'):
