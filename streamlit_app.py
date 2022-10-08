@@ -28,7 +28,6 @@ def main():
         conn = init_connection()
         query = "SELECT * FROM rooms"
         cursor.execute(query)
-            st.info("Query Submitted")
             st.write(row[0])
     
 if __name__ == '__main__':
