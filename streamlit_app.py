@@ -10,6 +10,11 @@ database="cubedb"
 user="arduino"
 password="1234"
 
+@st.experimental_singleton
+def init_connection():
+    return mysql.connector.connect('postgresql://{}:{}@{}:{}/{}'.format(user,password,host,port,database))
+conn = init_connection()
+
 def main():
     st.title("Cube Rooms")
     
