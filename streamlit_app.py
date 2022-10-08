@@ -27,4 +27,4 @@ def app():
     shwdata = st.multiselect('Pilih Kolom yang mau ditampilkan:', df.columns, default=[])
     st.write(df[shwdata])
 
-    st.text('F. Kyriakos)
+   # st.text('F. Kyriakos)
