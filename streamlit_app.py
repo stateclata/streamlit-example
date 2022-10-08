@@ -3,9 +3,23 @@
 import streamlit as st
 import pandas as pd
 import mysql.connector
+import sqlite3
+conn = sqlite3.connect('data/world.sqlite')
+c = connect.cursor()
+
+host="192.168.12.150"
+port = 3306
+database="cubedb"
+user="arduino"
+password="1234"
 
 def main():
     st.title("Cube Rooms")
+    
+@st.experimental_singleton
+def init_connection():
+    return mysql.connector.connect('postgresql://{}:{}@{}:{}/{}'.format(user,password,host,port,database))
+conn = init_connection()
     
     col1,col2 = st.columns(2)
     
