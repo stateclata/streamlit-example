@@ -7,8 +7,6 @@ import mysql.connector
 def main():
     st.title("Cube Rooms")
     
-    menu = ["CUBE BUCHAREST"]
-    
 
 # Initialize connection.
 # Uses st.experimental_singleton to only run once.
